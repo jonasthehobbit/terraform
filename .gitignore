@@ -1,0 +1,5 @@
+# Ignore TF config for backend
+**/.terraform/*
+backend.tf
+*.tfstate
+*.tfstate.*
