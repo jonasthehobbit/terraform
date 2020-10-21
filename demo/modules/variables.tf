@@ -8,7 +8,7 @@ variable "virtual_machines" {
       sku       = "16.04-LTS"
       version   = "latest"
     }
-        vm3 = {
+    vm3 = {
       size      = "Standard_A1_v2"
       publisher = "Canonical"
       offer     = "UbuntuServer"
