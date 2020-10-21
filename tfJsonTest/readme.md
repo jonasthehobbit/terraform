@@ -11,5 +11,5 @@ This was done for learning, thought it might be helpful for anyone startig on th
 ## Chalenges
 Tags!!! While passing the tags first time is no issue, if they are not ignored (using the lifecycle block in the resourceGroup module) they will show as changes in the state whenever you plan/apply, not sure how to ensure these remain in state and only change when changed!!
 ## More?
-[Local Values](https://www.terraform.io/docs/configuration/locals.html)
-[modules](https://www.terraform.io/docs/configuration/modules.html)
+- [Local Values](https://www.terraform.io/docs/configuration/locals.html)
+- [modules](https://www.terraform.io/docs/configuration/modules.html)
