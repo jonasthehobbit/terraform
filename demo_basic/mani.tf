@@ -1,25 +1,26 @@
+# block to define the provider or providers we're using
 provider "azurerm" {
   features {}
 }
 
+# resource for creating random strings that are considered secrets
 resource "random_password" "password" {
   length = 10
   special = true
   override_special = "_%@"
 }
 
+# create all pre-reqs required for the virtual machine
 resource "azurerm_resource_group" "main" {
   name     = "${var.prefix}-rg"
   location = var.location
 }
-
 resource "azurerm_virtual_network" "main" {
   name                = "${var.prefix}-vnet"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 }
-
 resource "azurerm_subnet" "internal" {
   name                 = "${azurerm_virtual_network.main.name}-snet"
   resource_group_name  = azurerm_resource_group.main.name
@@ -27,6 +28,7 @@ resource "azurerm_subnet" "internal" {
   address_prefixes     = ["10.0.2.0/24"]
 }
 
+# create virtual machines
 resource "azurerm_network_interface" "firstnic" {
   name                = "${var.prefix}-nic1"
   location            = azurerm_resource_group.main.location
@@ -38,7 +40,6 @@ resource "azurerm_network_interface" "firstnic" {
     private_ip_address_allocation = "Dynamic"
   }
 }
-
 resource "azurerm_virtual_machine" "firstvm" {
   name                  = "${var.prefix}-vm1"
   location              = azurerm_resource_group.main.location
