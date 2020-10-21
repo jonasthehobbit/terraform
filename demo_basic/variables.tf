@@ -1,5 +1,5 @@
 variable "prefix" {
-  default = "maples-tf-demo"
+  default = "maples-tf-demo-basic"
 }
 
 variable "location" {

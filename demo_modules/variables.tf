@@ -1,3 +1,4 @@
+#nested config for iteration
 variable "virtual_machines" {
   type = map
   default = {
@@ -8,7 +9,7 @@ variable "virtual_machines" {
       sku       = "16.04-LTS"
       version   = "latest"
     }
-    vm3 = {
+    vm2 = {
       size      = "Standard_A1_v2"
       publisher = "Canonical"
       offer     = "UbuntuServer"
@@ -20,7 +21,7 @@ variable "virtual_machines" {
 variable "project_name" {
   type        = string
   description = "(optional) describe your variable"
-  default     = "maples-demo"
+  default     = "maples-tf-demo-modules"
 }
 variable "location" {
   type        = string
