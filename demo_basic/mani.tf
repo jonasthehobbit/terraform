@@ -5,8 +5,8 @@ provider "azurerm" {
 
 # resource for creating random strings that are considered secrets
 resource "random_password" "password" {
-  length = 10
-  special = true
+  length           = 10
+  special          = true
   override_special = "_%@"
 }
 
@@ -41,11 +41,12 @@ resource "azurerm_network_interface" "firstnic" {
   }
 }
 resource "azurerm_virtual_machine" "firstvm" {
-  name                  = "${var.prefix}-vm1"
-  location              = azurerm_resource_group.main.location
-  resource_group_name   = azurerm_resource_group.main.name
-  network_interface_ids = [azurerm_network_interface.firstnic.id]
-  vm_size               = "Standard_A1_V2"
+  name                          = "${var.prefix}-vm1"
+  location                      = azurerm_resource_group.main.location
+  resource_group_name           = azurerm_resource_group.main.name
+  network_interface_ids         = [azurerm_network_interface.firstnic.id]
+  vm_size                       = "Standard_A1_V2"
+  delete_os_disk_on_termination = true
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
@@ -84,11 +85,12 @@ resource "azurerm_network_interface" "secondnic" {
 }
 
 resource "azurerm_virtual_machine" "secondvm" {
-  name                  = "${var.prefix}-vm2"
-  location              = azurerm_resource_group.main.location
-  resource_group_name   = azurerm_resource_group.main.name
-  network_interface_ids = [azurerm_network_interface.secondnic.id]
-  vm_size               = "Standard_A1_V2"
+  name                          = "${var.prefix}-vm2"
+  location                      = azurerm_resource_group.main.location
+  resource_group_name           = azurerm_resource_group.main.name
+  network_interface_ids         = [azurerm_network_interface.secondnic.id]
+  vm_size                       = "Standard_A1_V2"
+  delete_os_disk_on_termination = true
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
