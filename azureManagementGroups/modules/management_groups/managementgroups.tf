@@ -2,6 +2,7 @@ resource "azurerm_management_group" "root" {
   for_each     = var.root_groups
   name         = each.key
   display_name = each.value.displayname
+  parent_management_group_id = "if root.groups.level > 1 then this = "
 
   #   subscription_ids = [
   #     data.azurerm_subscription.current.subscription_id,
