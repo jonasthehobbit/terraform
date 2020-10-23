@@ -22,8 +22,8 @@ resource "azurerm_subnet" "internal" {
 
 #create virtual machines using a module and passing in a nested config variable
 module "standard_vm" {
-  vms      = var.virtual_machines
   source   = "./modules/standard_vm"
+  vms      = var.virtual_machines
   location = azurerm_resource_group.main.location
   rg       = azurerm_resource_group.main.name
   snet     = azurerm_subnet.internal.id
